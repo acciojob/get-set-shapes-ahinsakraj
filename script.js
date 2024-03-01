@@ -1,34 +1,39 @@
-class Animal {
-_species;
-constructor(species){
-  this.species = species;
+class Rectangle {
+    constructor(width, height) {
+        this._width = width;
+        this._height = height;
+    }
+
+    getArea() {
+        return this._height * this._width; // Corrected calculation
+    }
+
+    get width() {
+        return this._width;
+    }
+
+    get height() { // Added getter for height
+        return this._height;
+    }
+
+    set height(height) {
+        this._height = height;
+    }
 }
 
-  get species() {
-    return this._species;
-  }
+class Square extends Rectangle {
+    constructor(side) {
+        super(side, side);
+    }
 
-  set species(species) {
-    this._species = species;
-  }
-  makeSound() {
-    console.log(`The ${this._species} makes a sound`);
-  }
+    getPerimeter() {
+        return this._width * 4;
+    }
 }
 
-class Dog extends Animal {
-  bark() {
-    console.log('woof');
-  }
-}
-
-class Cat extends Animal {
-  purr() {
-    console.log('purr');
-  }
-}
+const total = new Square(12, 10); // Corrected instantiation
+console.log(total.getPerimeter());
 
 // Do not change the code below this line
-window.Animal = Animal;
-window.Dog = Dog;
-window.Cat = Cat;
+window.Rectangle = Rectangle;
+window.Square = Square;
